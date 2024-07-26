@@ -18,7 +18,7 @@ This respository contains all data (except from the raw FASTQ files, which are a
 * **Primers_anneal.temp..xlsx** - Primers and annealing temperatures for the first PCR in amplicon preparation.
 * **SupplementalFile1.xlsx** - All data files combined in a single Excel file.
 
-## Processing of raw sequencing data
+## Analysis of raw sequencing data
 The raw sequencing files were analyzed using Enrich2 to calculate abundance and interaction scores for MLH1 variants. The scores were calculated based on three replicates and normalized to synonymous wild-type variants. 
 
 ## Data analysis and plotting
