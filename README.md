@@ -1,2 +1,25 @@
-# _2024_Larsen-Ledet_MLH1
-data and scripts for "Disentangling the mutational effects on protein stability and interaction of human MLH1"
+# Disentangling the mutational effects on protein stability and interaction of human MLH1
+
+## Introduction
+This respository contains all data (except from the raw FASTQ files, which are available at the NCBI Gene Expression Omnibus (GEO) repository (accession number: XXXX) and code to repeat the processing and analysis of the abundance and interaction data of MLH1 in Larsen-Ledet et al.: "Disentangling the mutational effects on protein stability and interaction of human MLH1".
+
+## Overview of files
+*Output files*
+* **MLH1_data.csv** - Abundance and interaction scores as well as standard errors and epsilon scores for MLH1 variants.
+* **Tile_1-7_not_rescaled.csv** - Abundance (not rescaled) and interaction scores for MLH1 variants in each tile.
+* **Replicate_correlation.csv** - Correlation between three replicates of abundance and interaction scores for MLH1 variants.
+  
+*Input files*
+* **Rosetta_Gemme_data.csv** - Rosetta (ddG) and GEMME (ddE) calculations as well as experimental abundance and interacation scores for MLH1 variants.
+* **ClinVar_gnomAD_data.csv** - ClinVar classification and gnomAD allele frequency as well as experimental abundance and interaction scores for MLH1 variants.
+* **rSASA_Secondary.csv** - Relative solvent accessible surface area (rSASA) and secondary structure of each residue as well as median experimental abundance and interaction scores for each position.
+
+*Excel files*
+* **Primers_anneal.temp..xlsx** - Primers and annealing temperatures for the first PCR in amplicon preparation.
+* **SupplementalFile1.xlsx** - All data files combined in a single Excel file.
+
+## Processing of raw sequencing data
+The raw sequencing files were analyzed using Enrich2 to calculate abundance and interaction scores for MLH1 variants. The scores were calculated based on three replicates and normalized to synonymous wild-type variants. 
+
+## Data analysis and plotting
+The MLH1_data_analysis.R file is used to produce all plots in the main figures, and the MLH1_data_analysis_supplementary.R file is used to produce all plots in the supplementary figures.
