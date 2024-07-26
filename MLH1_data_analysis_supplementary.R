@@ -5,6 +5,7 @@ library(circlize)
 library(ggExtra)
 library(ggpubr)
 library(ggpmisc)
+library(hexbin)
 
 #Change the path to your directory
 path <- ""
@@ -17,7 +18,7 @@ rSASA_Secondary <- read.csv(file.path(path, "rSASA_Secondary.csv"))
 
 
 #Fig. S4B
-ggplot(Tiles, aes(x = score_abundance, fill = Tile)) +
+ggsave(file.path(path, "Fig.S4B.pdf"), ggplot(Tiles, aes(x = score_abundance, fill = Tile)) +
   geom_density(alpha = 0.3) + 
   geom_segment(aes(x = 0, y = 0, xend = 0, yend = 1.7), color = "black", linetype = "dashed", linewidth = 0.8) +
   annotate("label", x = 0, y = 1.7, label = "WT", color = "black", size = 3) +
@@ -27,11 +28,11 @@ ggplot(Tiles, aes(x = score_abundance, fill = Tile)) +
   xlab("Abundance score") +
   ylab("Density") +
   theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()), width = 6, height = 6)
 
 
 #Fig. S4C
-ggplot(Tiles, aes(x = score_interaction, fill = Tile)) +
+ggsave(file.path(path, "Fig.S4C.pdf"), ggplot(Tiles, aes(x = score_interaction, fill = Tile)) +
   geom_density(alpha = 0.3) + 
   geom_segment(aes(x = 0, y = 0, xend = 0, yend = 7), color = "black", linetype = "dashed", linewidth = 0.8) +
   annotate("label", x = 0, y = 7, label = "WT", color = "black", size = 3) +
@@ -41,11 +42,11 @@ ggplot(Tiles, aes(x = score_interaction, fill = Tile)) +
   xlab("Interaction score") +
   ylab("Density") +
   theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()), width = 6, height = 6)
 
 
 #Fig. S5
-ggplot(Replicate_correlation, aes(score_abundance_rep1, score_abundance_rep2)) +
+ggsave(file.path(path, "Fig.S51.pdf"), ggplot(Replicate_correlation, aes(score_abundance_rep1, score_abundance_rep2)) +
   geom_point() +
   stat_cor(method = "pearson", aes(label = ..r.label..)) +
   stat_poly_line() + 
@@ -53,8 +54,8 @@ ggplot(Replicate_correlation, aes(score_abundance_rep1, score_abundance_rep2)) +
   ylab("Abundance_rep2") + 
   scale_x_continuous(limits = c(-2.5, 2.5)) +
   scale_y_continuous(limits = c(-2.5, 2.5)) +
-  theme_bw()
-ggplot(Replicate_correlation, aes(score_abundance_rep1, score_abundance_rep3)) +
+  theme_bw(), width = 6, height = 6)
+ggsave(file.path(path, "Fig.S52.pdf"), ggplot(Replicate_correlation, aes(score_abundance_rep1, score_abundance_rep3)) +
   geom_point() +
   stat_cor(method = "pearson", aes(label = ..r.label..)) +
   stat_poly_line() + 
@@ -62,8 +63,8 @@ ggplot(Replicate_correlation, aes(score_abundance_rep1, score_abundance_rep3)) +
   ylab("Abundance_rep3") + 
   scale_x_continuous(limits = c(-2.5, 2.5)) +
   scale_y_continuous(limits = c(-2.5, 2.5)) +
-  theme_bw()
-ggplot(Replicate_correlation, aes(score_abundance_rep2, score_abundance_rep3)) +
+  theme_bw(), width = 6, height = 6)
+ggsave(file.path(path, "Fig.S53.pdf"), ggplot(Replicate_correlation, aes(score_abundance_rep2, score_abundance_rep3)) +
   geom_point() +
   stat_cor(method = "pearson", aes(label = ..r.label..)) +
   stat_poly_line() + 
@@ -71,29 +72,29 @@ ggplot(Replicate_correlation, aes(score_abundance_rep2, score_abundance_rep3)) +
   ylab("Abundance_rep3") + 
   scale_x_continuous(limits = c(-2.5, 2.5)) +
   scale_y_continuous(limits = c(-2.5, 2.5)) +
-  theme_bw()
+  theme_bw(), width = 6, height = 6)
 
-ggplot(Replicate_correlation, aes(score_interaction_rep1, score_interaction_rep2)) +
+ggsave(file.path(path, "Fig.S54.pdf"), ggplot(Replicate_correlation, aes(score_interaction_rep1, score_interaction_rep2)) +
   geom_point() +
   stat_cor(method = "pearson", aes(label = ..r.label..)) +
   stat_poly_line() + 
   xlab("Interaction_rep1") + 
   ylab("Interaction_rep2") + 
-  theme_bw()
-ggplot(Replicate_correlation, aes(score_interaction_rep1, score_interaction_rep3)) +
+  theme_bw(), width = 6, height = 6)
+ggsave(file.path(path, "Fig.S55.pdf"), ggplot(Replicate_correlation, aes(score_interaction_rep1, score_interaction_rep3)) +
   geom_point() +
   stat_cor(method = "pearson", aes(label = ..r.label..)) +
   stat_poly_line() + 
   xlab("Interaction_rep1") + 
   ylab("Interaction_rep3") + 
-  theme_bw()
-ggplot(Replicate_correlation, aes(score_interaction_rep2, score_interaction_rep3)) +
+  theme_bw(), width = 6, height = 6)
+ggsave(file.path(path, "Fig.S56.pdf"), ggplot(Replicate_correlation, aes(score_interaction_rep2, score_interaction_rep3)) +
   geom_point() +
   stat_cor(method = "pearson", aes(label = ..r.label..)) +
   stat_poly_line() + 
   xlab("Interaction_rep2") + 
   ylab("Interaction_rep3") + 
-  theme_bw()
+  theme_bw(), width = 6, height = 6)
 
 
 #Fig. S6A
@@ -113,21 +114,21 @@ for (i in 1:270){
   wt_res <- wt[i,'wt_aa']
   heatmap_SE_abundance_wt[wt_res, i] <- 10
 }
-draw(Heatmap(heatmap_SE_abundance_wt,                                         
+Fig.S6A <- draw(Heatmap(heatmap_SE_abundance_wt,                                         
              cluster_rows = FALSE, 
              cluster_columns = FALSE,
              colorRamp2(c(seq(0.007654119, 0.4539574, length.out = 199), 10), c(colorRampPalette(c("white", "darkgreen"))(199), "yellow")),
              name = ("Abundance SE"),
              heatmap_legend_param = list(direction = "horizontal",
                                          title_position = "topcenter", 
-                                         legend_width = unit(10, "cm"),
-                                         labels_gp = gpar(fontsize = 12),
-                                         title_gp = gpar(fontsize = 14, fontface = "bold"),
+                                         legend_width = unit(20, "cm"),
+                                         labels_gp = gpar(fontsize = 20),
+                                         title_gp = gpar(fontsize = 20, fontface = "bold"),
                                          border = "black", 
                                          at = c(0, 0.15, 0.3, 0.45),
                                          labels = c("0", "0.15", "0.3", "0.45")),
-             row_names_gp = gpar(fontsize = 12),
-             column_names_gp = gpar(fontsize = 7),
+             row_names_gp = gpar(fontsize = 20),
+             column_names_gp = gpar(fontsize = 16),
              row_names_side = "left",
              border_gp = gpar(col = "black", lwd = 0.5),
              rect_gp = gpar(col = "black", lwd = 0.5),
@@ -137,7 +138,11 @@ draw(Heatmap(heatmap_SE_abundance_wt,
      annotation_legend_list = list(Legend(labels = c("Wild-type amino acid", "Missing variant"),
                                           legend_gp = gpar(fill = c("yellow", "dimgrey")),
                                           border = c("black", "black"),
-                                          labels_gp = gpar(fontsize = 12))))
+                                          labels_gp = gpar(fontsize = 20))))
+pdf(file.path(path, "Fig.S6A.pdf"), width = 50, height = 10)
+Fig.S6A <- Fig.S6A
+draw(Fig.S6A)
+dev.off()
 
 
 #Fig. S6B
@@ -152,21 +157,21 @@ for (i in 1:270){
   wt_res <- wt[i,'wt_aa']
   heatmap_SE_interaction_wt[wt_res, i] <- 10
 }
-draw(Heatmap(heatmap_SE_interaction_wt,                                         
+Fig.S6B <- draw(Heatmap(heatmap_SE_interaction_wt,                                         
              cluster_rows = FALSE, 
              cluster_columns = FALSE,
              colorRamp2(c(seq(0.0129505, 0.298587, length.out = 199), 10), c(colorRampPalette(c("white", "darkgreen"))(199), "yellow")),
              name = ("Interaction SE"),
              heatmap_legend_param = list(direction = "horizontal",
                                          title_position = "topcenter", 
-                                         legend_width = unit(10, "cm"),
-                                         labels_gp = gpar(fontsize = 12),
-                                         title_gp = gpar(fontsize = 14, fontface = "bold"),
+                                         legend_width = unit(20, "cm"),
+                                         labels_gp = gpar(fontsize = 20),
+                                         title_gp = gpar(fontsize = 20, fontface = "bold"),
                                          border = "black", 
                                          at = c(0, 0.1, 0.2),
                                          labels = c("0", "0.1", "0.2")),
-             row_names_gp = gpar(fontsize = 12),
-             column_names_gp = gpar(fontsize = 7),
+             row_names_gp = gpar(fontsize = 20),
+             column_names_gp = gpar(fontsize = 16),
              row_names_side = "left",
              border_gp = gpar(col = "black", lwd = 0.5),
              rect_gp = gpar(col = "black", lwd = 0.5),
@@ -176,30 +181,34 @@ draw(Heatmap(heatmap_SE_interaction_wt,
      annotation_legend_list = list(Legend(labels = c("Wild-type amino acid", "Missing variant"),
                                           legend_gp = gpar(fill = c("yellow", "dimgrey")),
                                           border = c("black", "black"),
-                                          labels_gp = gpar(fontsize = 12))))
+                                          labels_gp = gpar(fontsize = 20))))
+pdf(file.path(path, "Fig.S6B.pdf"), width = 50, height = 10)
+Fig.S6B <- Fig.S6B
+draw(Fig.S6B)
+dev.off()
 
 
 #Fig. S7A
 rSASA_Secondary$Secondary_structure <- factor(rSASA_Secondary$Secondary_structure , levels = c("Loops", "Helices", "Sheets"))
-ggplot() +
+ggsave(file.path(path, "Fig.S7A.pdf"), ggplot() +
   geom_point(rSASA_Secondary, mapping = aes(score_abundance_median, rSASA), size = 2.5) +
   geom_point(rSASA_Secondary, mapping = aes(score_abundance_median, rSASA, color = Secondary_structure), size = 1.5) +
   scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.2, 0.4, 0.6, 0.8, 1)) +
   scale_color_manual(values = c("#73A222", "#FFF670", "#CF47FF"), labels=c("Loops", "Helices", "Sheets")) +
   xlab("Median abundance score") +
   theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()), width = 7, height = 6) 
 
 
 #Fig. S7B
-ggplot() +
+ggsave(file.path(path, "Fig.S7B.pdf"), ggplot() +
   geom_point(rSASA_Secondary, mapping = aes(score_interaction_median, rSASA), size = 2.5) +
   geom_point(rSASA_Secondary, mapping = aes(score_interaction_median, rSASA, color = Secondary_structure), size = 1.5) +
   scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.2, 0.4, 0.6, 0.8, 1)) +
   scale_color_manual(values = c("#73A222", "#FFF670", "#CF47FF"), labels=c("Loops", "Helices", "Sheets")) +
   xlab("Median interaction score") +
   theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()), width = 7, height = 6)
 
 
 #Fig. S8A
@@ -211,7 +220,7 @@ LOI_GOI_variants <- MLH1_data %>%
          variant == "p.Gln544Trp" |
          variant == "p.Gly602Leu" |
          variant == "p.Lys604Cys")
-ggplot() + 
+ggsave(file.path(path, "Fig.S8A.pdf"), ggplot() + 
   geom_hex(MLH1_data, mapping = aes(score_abundance, score_interaction), bins = 70) +
   geom_hex(LOI_GOI_variants, mapping = aes(score_abundance, score_interaction), bins = 70, fill = "red") +
   scale_fill_gradient(low = "black", high = "magenta", breaks = c(20, 40, 60)) +
@@ -221,7 +230,7 @@ ggplot() +
   xlab("Abundance score") +
   ylab("Interaction score") +
   theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()), width = 7, height = 6)
 
 
 #Fig. S12A
@@ -231,7 +240,7 @@ LOS_WTI_variants <- MLH1_data %>%
          variant == "p.Leu540Ser" |
          variant == "p.Thr553Phe" |
          variant == "p.Gln562Tyr")
-ggplot() + 
+ggsave(file.path(path, "Fig.S12A.pdf"), ggplot() + 
   geom_hex(MLH1_data, mapping = aes(score_abundance, score_interaction), bins = 70) +
   geom_hex(LOS_WTI_variants, mapping = aes(score_abundance, score_interaction), bins = 70, fill = "red") +
   scale_fill_gradient(low = "black", high = "magenta", breaks = c(20, 40, 60)) +
@@ -241,4 +250,5 @@ ggplot() +
   xlab("Abundance score") +
   ylab("Interaction score") +
   theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()), width = 7, height = 6)
+
