@@ -1,7 +1,7 @@
 # Disentangling the mutational effects on protein stability and interaction of human MLH1
 
 ## Introduction
-This respository contains all data (except from the raw FASTQ files, which are available at the NCBI Gene Expression Omnibus (GEO) repository (accession number: XXXX) and code to repeat the processing and analysis of the abundance and interaction data of MLH1 in Larsen-Ledet et al.: "Disentangling the mutational effects on protein stability and interaction of human MLH1".
+This respository contains all data (except from the raw FASTQ files, which are available at the NCBI Gene Expression Omnibus (GEO) repository (accession number: GSE273652) and code to repeat the processing and analysis of the abundance and interaction data of MLH1 in Larsen-Ledet et al.: "Disentangling the mutational effects on protein stability and interaction of human MLH1".
 
 ## Overview of files
 *Output files*
@@ -23,3 +23,6 @@ The raw sequencing files were analyzed using Enrich2 to calculate abundance and 
 
 ## Data analysis and plotting
 The MLH1_data_analysis.R file is used to produce all plots in the main figures, and the MLH1_data_analysis_supplementary.R file is used to produce all plots in the supplementary figures.
+
+## Preprint
+https://doi.org/10.1101/2024.07.28.605491 
