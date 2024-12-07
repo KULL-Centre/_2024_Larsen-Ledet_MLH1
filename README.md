@@ -13,6 +13,9 @@ This respository contains all data (except from the raw FASTQ files, which are a
 * **Rosetta_Gemme_data.csv** - Rosetta (ddG) and GEMME (ddE) calculations as well as experimental abundance and interacation scores for MLH1 variants.
 * **ClinVar_gnomAD_data.csv** - ClinVar classifications and gnomAD allele frequencies as well as experimental abundance and interaction scores for MLH1 variants.
 * **rSASA_Secondary.csv** - Relative solvent accessible surface area (rSASA) and secondary structure of each residue as well as median experimental abundance and interaction scores for each position.
+* **Benchmark_Hinrichsen.csv** - Benchmarks our experimental abundance scores against MLH1 expression levels as reported by Hinrichsen et al. (2013).
+* **Benchmark_Abildgaard.csv** - Benchmarks our experimental abundance scores against MLH1 expression levels as reported by Abildgaard et al. (2019).
+* **Benchmark_Kosinski.csv** - Benchmarks our experimental interaction scores against PMS2 dimerization as reported by Kosinski et al. (2010).
 
 *Excel files*
 * **Primers_anneal.temp..xlsx** - Primers and annealing temperatures for the first PCR in amplicon preparation.
