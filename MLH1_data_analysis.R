@@ -5,7 +5,7 @@ library(circlize)
 library(ggExtra)
 
 #Change the path to your directory
-path <- ""
+path <- "your_path"
 
 #Read in dataframes
 MLH1_data <- read.csv(file.path(path, "MLH1_data.csv"))
@@ -141,7 +141,7 @@ ggsave(file.path(path, "Fig.4A.pdf"), ggMarginal(ggplot() +
              geom_point(Rosetta_Gemme_data, mapping = aes(Rosetta_ddG, Gemme_ddE), color = "black", size = 1) + 
              geom_point(Rosetta_Gemme_data, mapping = aes(Rosetta_ddG, Gemme_ddE, color = score_abundance), size = 0.5) + 
              labs(color = "Abundance score") + 
-             scale_colour_gradient2(limits=c(-1.240268, 1.240268), oob = scales::squish, breaks = c(-1, 0, 1), labels = c("Low abundance", "WT abundance", "High abundance")) + 
+             scale_colour_gradient2(limits = c(-1.240268, 1.240268), oob = scales::squish, breaks = c(-1, 0, 1), labels = c("Low abundance", "WT abundance", "High abundance")) + 
              xlab(expression(Rosetta~Delta*Delta*G)) +  
              ylab(expression(GEMME~Delta*Delta*E)) + 
              theme_bw() + 
@@ -153,7 +153,7 @@ ggsave(file.path(path, "Fig.4B.pdf"), ggMarginal(ggplot() +
              geom_point(Rosetta_Gemme_data, mapping = aes(Rosetta_ddG, Gemme_ddE), color = "black", size = 1) + 
              geom_point(Rosetta_Gemme_data, mapping = aes(Rosetta_ddG, Gemme_ddE, color = score_interaction), size = 0.5) + 
              labs(color = "Interaction score") + 
-             scale_colour_gradient2(limits=c(-1.902492, 1.902492), oob = scales::squish, breaks = c(-1.6, 0, 1.6), labels = c("Weak interaction", "WT interaction", "Strong interaction")) +
+             scale_colour_gradient2(limits = c(-1.902492, 1.902492), oob = scales::squish, breaks = c(-1.6, 0, 1.6), labels = c("Weak interaction", "WT interaction", "Strong interaction")) +
              xlab(expression(Rosetta~Delta*Delta*G)) +  
              ylab(expression(GEMME~Delta*Delta*E)) + 
              theme_bw() + 
