@@ -8,7 +8,7 @@ This respository contains all data (except from the raw FASTQ files, which are a
 * **MLH1_data.csv** - Abundance and interaction scores as well as standard errors and epsilon scores for MLH1 variants.
 * **Tile_1-7_not_rescaled.csv** - Abundance (not rescaled) and interaction scores for MLH1 variants in each tile.
 * **Replicate_correlation.csv** - Correlation between three replicates of abundance and interaction scores for MLH1 variants.
-* * **Human_MutLalpha_full_AF3.cif** - The best-scoring model of the full human MutLα complex predicted by AlphaFold 3. 
+* **Human_MutLalpha_full_AF3.cif** - The best-scoring model of the full human MutLα complex predicted by AlphaFold 3. 
   
 *Input files*
 * **Rosetta_Gemme_data.csv** - Rosetta (ddG) and GEMME (ddE) calculations as well as experimental abundance and interacation scores for MLH1 variants.
